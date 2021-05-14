@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "command": "cargo",
+    "type": "shell",
+    "args": [
+        "build",
+        "--target=x86_64-unknown-linux-musl"
+    ],
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+    },
+}
