@@ -8,12 +8,12 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "console": "internalConsole",
-            "program": "${workspaceRoot}/target/x86_64-unknown-linux-musl/debug/rust-bp",
+            // "console": "internalConsole",
+            "console": "integratedTerminal",
+            "program": "${workspaceRoot}/target/debug/rust-bp",
             "cargo": {
                 "args": [
-                    "run",
-                    "--target=x86_64-unknown-linux-musl"
+                    "run"
                 ]
             },
             "args": [],
