@@ -1,18 +1,30 @@
 use std::{fs, path::PathBuf};
 
-pub fn read_dir(path: &str) -> Vec<PathBuf> {
-    let entries = fs::read_dir(path);
+use crate::util::string;
+
+pub fn read_dir(path: &str) -> (Vec<String>, Vec<String>) {
+    let read_dir_result = fs::read_dir(path);
 
     let mut paths: Vec<PathBuf> = Vec::new();
+    let mut dirs: Vec<String> = Vec::new();
+    let mut files: Vec<String> = Vec::new();
 
-    for e in entries {
+    for e in read_dir_result {
         for ex in e {
-            for exx in ex {
-                let path = exx.path();
-                paths.push(path);
+            for dir_entry in ex {
+                paths.push(dir_entry.path());
             }
         }
     }
 
-    paths
+    for path in paths {
+        let str = string::cleanup_str(path.clone());
+        if path.is_dir() {
+            dirs.push(str);
+        } else if path.is_file() {
+            files.push(str);
+        }
+    }
+
+    (dirs, files)
 }

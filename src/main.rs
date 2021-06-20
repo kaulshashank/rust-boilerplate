@@ -1,12 +1,16 @@
 mod file_io;
-mod print;
+mod util;
 
 fn main() {
-    let paths = file_io::read_dir(".");
-    for path in paths {
-        if path.is_dir() {
-            println!("\n\nDirectories in this path are:");
-            print::display_dir(path);
-        }
+    println!("\n\nDirectories in this path are:");
+
+    let (dirs, files) = file_io::read_dir(".");
+
+    for dir in dirs {
+        util::print::display_dir(dir);
+    }
+
+    for file in files {
+        util::print::display_file(file);
     }
 }
