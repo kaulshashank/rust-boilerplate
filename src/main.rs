@@ -1,3 +1,8 @@
+mod file_io;
+
 fn main() {
-    println!("Hello, world!");
+    let paths = file_io::read_dir(".");
+    for path in paths {
+        println!("Path is: {}", path.display())
+    }
 }
